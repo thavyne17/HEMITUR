@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Meu Site com Menu Responsivo</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<style>
+  a {
+    text-decoration: none;
+    color: rgb(22, 13, 151);
+  }
+</style>
+
+<body>
+  <!-- Menu -->
+  <header>
+
+    <nav class="navbar">
+
+         <div class="logo"><img src="logo.png" alt="logo"/></div>
+        </div>
+
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+
+        <!-- Menu Dropdown -->
+        <li><a href="hoteis.html">Hotéis</a></li>
+
+        <li><a href="sobrenos.html">Sobre nós</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Container principal -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="https://cdn.pixabay.com/photo/2020/06/08/06/37/prague-5273285_1280.jpg" alt="Imagem 1">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://i.pinimg.com/736x/4b/e7/cf/4be7cf232dd9fd9f72045545fadc53ae.jpg" alt="Imagem 2">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://cdn.pixabay.com/photo/2018/07/26/21/27/sweden-3564613_1280.jpg" alt="Imagem 3">
+      </div>
+    </div>
+
+    <!-- Botões de navegação -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+    <!-- Paginação (bolinhas) -->
+    <div class="swiper-pagination"></div>
+
+  </div>
+  <div class="faixa-separadora"></div>
+  <h1>Conheça Novos Lugares</h1>
+
+  <section class="container-section">
+    <div class="grid-container">
+      <div class="container">
+        <img
+          src="https://images.pexels.com/photos/2065850/pexels-photo-2065850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="São Paulo">
+        <div class="titulo-destino">São Paulo</div>
+        <a href="pacote1.html" class="meu-botao">Saiba mais</a>
+      </div>
+      <div class="container">
+        <img src="https://i.pinimg.com/736x/9c/66/b0/9c66b03d465cfcdbc0b04329a8ecb678.jpg" alt="Alemanha">
+        <div class="titulo-destino">Alemanha</div>
+        <a href="pacote2.html" class="meu-botao">Saiba mais</a>
+      </div>
+      <div class="container">
+        <img src="https://i.pinimg.com/736x/68/1d/64/681d642d93b3b6b58daadb2d69b3d353.jpg" alt="Chile">
+        <div class="titulo-destino">Chile</div>
+        <a href="pacote3.html" class="meu-botao">Saiba mais</a>
+      </div>
+      <div class="container">
+        <img src="https://i.pinimg.com/736x/66/b7/e7/66b7e795dc416c784a54fc1b834a55c2.jpg" alt="Rio de Janeiro">
+        <div class="titulo-destino">Rio de Janeiro</div>
+        <a href="pacote4.html" class="meu-botao">Saiba mais</a>
+      </div>
+      <div class="container">
+        <img src="https://i.pinimg.com/736x/20/89/d0/2089d02f759b59f497aad31056c63030.jpg" alt="Inglaterra">
+        <div class="titulo-destino">Inglaterra</div>
+        <a href="pacote5.html" class="meu-botao">Saiba mais</a>
+      </div>
+      <div class="container">
+        <img src="https://viajesozinha.com/wp-content/uploads/2024/10/shutterstock_2318051867.jpg" alt="Bahia">
+        <div class="titulo-destino">Tailândia</div>
+        <a href="pacote6.html" class="meu-botao">Saiba mais</a>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <div class="caixa">
+    <!-- Card 1 -->
+    <div class="plano-card">
+      <h2>Plano Básico</h2>
+      <div class="linha"></div>
+      <div class="beneficio">Acesso limitado</div>
+      <div class="linha"></div>
+      <div class="beneficio">Visitas simples</div>
+      <div class="linha"></div>
+      <div class="beneficio">Suporte comum</div>
+      <div class="linha"></div>
+      <div class="beneficio">Sem reservas</div>
+      <div class="linha"></div>
+      <button class="btn-assinar"><a href="basico.html">Assinar</a></button>
+    </div>
+
+    <!-- Card 2 (em destaque) -->
+    <div class="plano-card detaque">
+      <h2>Plano Premium</h2>
+      <div class="linha"></div>
+      <div class="beneficio">Tudo do Plano Comum</div>
+      <div class="linha"></div>
+      <div class="beneficio">Acesso VIP</div>
+      <div class="linha"></div>
+      <div class="beneficio">Suporte 24h</div>
+      <div class="linha"></div>
+      <div class="beneficio">Upgrades grátis</div>
+      <div class="linha"></div>
+      <button class="btn-assinar" id="start-subscription"><a href="premium.html">Assinar</a></button>
+    </div>
+
+
+    <!-- Card 3 -->
+    <div class="plano-card">
+      <h2>Plano Comum</h2>
+      <div class="linha"></div>
+      <div class="beneficio">Desconto em hotéis afiliados</div>
+      <div class="linha"></div>
+      <div class="beneficio">Visitas guiadas</div>
+      <div class="linha"></div>
+      <div class="beneficio">Seguro viagem</div>
+      <div class="linha"></div>
+      <div class="beneficio">Reservas de suítes</div>
+      <div class="linha"></div>
+      <button class="btn-assinar"><a href="comum.html">Assinar</a></button>
+    </div>
+
+  </div>
+  <button id="back-to-top" title="Voltar ao topo">↑</button>
+
+  <script>
+    // Mostrar/ocultar botão ao rolar
+    window.addEventListener('scroll', function () {
+      const backToTop = document.getElementById('back-to-top');
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+
+    // Rolar suavemente ao topo ao clicar
+    document.getElementById('back-to-top').addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+
+  <footer>
+    <p>Redes sociais</p>
+    <a href="https://www.instagram.com/hemitur.oficial?igsh=cXJzN29qamgxOXc0" target="_blank" class="instagram-link">
+      <i class="fab fa-instagram"></i> <!-- Ícone separado -->
+      <span>𝑰𝒏𝒔𝒕𝒂</span> <!-- Texto separado -->
+    </a>
+    <p>&copy; 2025 MeuSite. Todos os direitos reservados.</p>
+  </footer>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Inicialização do Swiper -->
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

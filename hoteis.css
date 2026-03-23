@@ -1,0 +1,213 @@
+/* Estilos Gerais */
+html {
+  scroll-behavior: smooth; /* para ter uma rolagem mais dinâmica */
+}
+
+body {
+  margin: 0;
+  background: url();
+  background-color: #f2f6ff;
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+}
+
+/* === CABEÇALHO E NAVEGAÇÃO === */
+header {
+  position: fixed;
+  justify-content: space-between;
+  top: 0;/*para definir a posição vertical de um elemento em relação à sua posição padrão ou ao elemento pai */
+  width: 100%;/*definir a largura de um elemento */
+  background-color:#042c4f;
+  padding: 10px 30px;/*espaço entre conteudo de um elemento e suas bordas */
+  text-align: center;
+  z-index: 1000; /* ordem de empilhamento*/
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin:0 auto;
+  padding:10px 40px;
+  height: 80px;
+
+}
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: rgb(164, 148, 148);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+.logo img{
+   height: 104px;
+  width: auto;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+
+}
+
+.menu li {
+  margin-left: 20px;
+  position: relative;
+}
+
+.menu a {
+  color: #6dc7e8;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  display: block;
+}
+
+.menu a:hover {
+  background-color: #6498aa;
+}
+
+/* === MENU RESPONSIVO === */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #b5aaaa;
+    padding: 10px 0;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+/* Conteúdo Centralizado e Responsivo */
+.section-pag {
+  max-width: 1000px;
+  width: 90%;
+  margin: 80px auto;
+  background: rgb(248, 246, 209);
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 0 7px 15px rgba(223, 210, 91, 0.881);
+  animation: fadeIn 1s ease-in-out;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Para adaptar em telas menores */
+ 
+}
+.section-pag h2 {
+font-family: 'Cinzel', serif;
+ font-size:xx-large;
+   margin-bottom: 1px; /* Reduz espaço abaixo do título */
+}
+.section-pag p{
+ font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+   margin-top: 0;       /* Remove espaço acima do parágrafo */
+  line-height: 1.4;
+}
+.section{
+  max-width: 1000px;
+  width: 90%;
+  margin: 80px auto;
+  background: rgb(248, 246, 209);
+  padding: 40px 20px;
+  border-radius: 15px;
+  animation: fadeIn 1s ease-in-out;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espaço entre imagem e texto */
+  flex-wrap: wrap; /* Para adaptar em telas menores */
+
+}
+/* Seções */
+
+.content-box {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espaço entre imagem e texto */
+  flex-wrap: wrap; /* Para adaptar em telas menores */
+}
+
+.imagem-lateral {
+  width: 40%;
+  max-width: 300px;
+  border-radius: 10px;
+}
+ .botao-container {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .meu-botao {
+      padding: 12px 24px;
+      background-color: #f5e16f;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+       top: 50%;         /* centralizado verticalmente */
+  left: 50%;        /* centralizado horizontalmente */
+  transform: translate(-50%, -50%);
+      cursor: pointer;
+      position: absolute;
+    }
+
+    .meu-botao:hover {
+      background-color: #f6ca2d;
+    }
+
+
+/* Responsividade para telas pequenas */
+@media (max-width: 600px) {
+  header p {
+    font-size: 18px;
+    padding: 10px 5px;
+  }
+
+  header nav a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .section-pag {
+    padding: 20px 10px;
+  }
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Descubra os melhores hotéis pelo mundo com a Hemitur. Opções no Brasil, América, Europa, Ásia e Rússia.">
+  <title>Hotéis - Hemitur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #003B73;
+      --accent: #FFC857;
+      --highlight: #FF9900;
+      --background-light: #f7f9fc;
+      --background-section: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: white no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+    header {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      height: 60px;
+    }
+    .menu { list-style: none; display: flex; gap: 24px; }
+    .menu li a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .menu li a:hover { color: var(--highlight); }
+    .filter {
+      max-width: 1100px;
+      margin: 40px auto 20px;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .filter button {
+      background-color: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .filter button:hover,
+    .filter button.active { background-color: var(--highlight); }
+    .section-pag {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 20px;
+      margin: 20px auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      max-width: 1100px;
+    }
+    .section-pag img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      flex: 1 1 300px;
+    }
+    .section-content { flex: 2 1 400px; }
+    .section-content h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .section-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+    }
+    .botao-container { margin-top: 16px; }
+    .meu-botao {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--accent);
+      color: #000;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+    .meu-botao:hover { background-color: var(--highlight); }
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
+      margin-top: 60px;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a:hover { text-decoration: underline; }
+    #voltarTopo {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--highlight);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 50%;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: none;
+    }
+    #voltarTopo:hover {
+      background-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://i.ibb.co/ds0DDHzV/logo-hemitur.png" alt="Logo Hemitur" class="logo">
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sobre.html">Sobre Nós</a></li>
+      <li><a href="pacote1.html">Pacotes</a></li>
+    </ul>
+  </header>
+
+  <div class="filter">
+    <button onclick="filterHotels('all', this)" class="active">Todos</button>
+    <button onclick="filterHotels('brasil', this)">Brasil</button>
+    <button onclick="filterHotels('america', this)">América</button>
+    <button onclick="filterHotels('europa', this)">Europa</button>
+    <button onclick="filterHotels('asia', this)">Ásia</button>
+    <button onclick="filterHotels('russia', this)">Rússia</button>
+  </div>
+
+  <main id="hotel-list"></main>
+
+  <button id="voltarTopo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+
+  <footer>
+    <p><strong>Pronto para sua próxima aventura?</strong></p>
+    <p><a href="pacote1.html">Ver Nossos Pacotes</a></p>
+    <p><a href="https://wa.me/5585982033367" target="_blank">WhatsApp</a> • <a href="https://instagram.com/hemitur.oficial" target="_blank">Instagram</a> • <a href="mailto:hemitur.oficial@gmail.com">Email</a></p>
+    <p>© 2025 Hemitur Turismo. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const hoteis = [
+    { nome: "Hotel Unique", cidade: "São Paulo", regiao: "brasil", imagem: "https://www.hotelunique.com.br/images/unique/hotel-fachada.jpg", texto: "Ícone da arquitetura em SP com rooftop exclusivo.", link: "hoteismais/saopaulo.html" },
+    { nome: "Gran Mareiro", cidade: "Fortaleza", regiao: "brasil", imagem: "https://cdn.hotelurbano.com/reservas/prod0/25825/576ef2b3b44e7-hotel-gran-mareiro.jpg", texto: "Frente mar na Praia do Futuro, com lazer completo.", link: "hoteismais/fortaleza.html" },
+    { nome: "Belmond Copacabana Palace", cidade: "Rio de Janeiro", regiao: "brasil", imagem: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/f4/fc/e0/belmond-copacabana-palace.jpg", texto: "Ícone carioca com vista para o mar de Copacabana.", link: "hoteismais/copacabana.html" },
+    { nome: "Fasano Boa Vista", cidade: "Porto Feliz", regiao: "brasil", imagem: "https://www.fasano.com.br/media/2523/fasano-boa-vista-fachada.jpg", texto: "Hotel fazenda de luxo a 100km de SP.", link: "hoteismais/boavista.html" },
+    { nome: "Park Hyatt New York", cidade: "Nova York", regiao: "america", imagem: "https://media.cntraveler.com/photos/5d5e3e646ec7c100084b7dc6/16:9/w_2560,c_limit/Park-Hyatt-New-York_2019_Park-Hyatt-New-York_1-Bedroom-City-View-Suite-Living-Room.jpg", texto: "Sofisticação em Manhattan com vista para o Central Park.", link: "hoteismais/ny.html" },
+    { nome: "Fairmont Le Château Frontenac", cidade: "Quebec", regiao: "america", imagem: "https://www.fairmont.com/assets/0/104/558/580/18690/21314/596de146-9bff-437f-85b2-891c2ddc2de6.jpg", texto: "Castelo-hotel no coração da cidade antiga.", link: "hoteismais/quebec.html" },
+    { nome: "Hotel Ritz Paris", cidade: "Paris", regiao: "europa", imagem: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Ritz_Paris_entrance.jpg", texto: "Glamour e história na Place Vendôme.", link: "hoteismais/paris.html" },
+    { nome: "Grand Hotel Tremezzo", cidade: "Lago di Como", regiao: "europa", imagem: "https://www.grandhoteltremezzo.com/media/1419/piscina.jpg", texto: "Às margens do Lago Como, puro romance italiano.", link: "hoteismais/como.html" },
+    { nome: "The Ritz London", cidade: "Londres", regiao: "europa", imagem: "https://upload.wikimedia.org/wikipedia/commons/2/26/Ritz_London.jpg", texto: "Luxo clássico britânico e localização nobre.", link: "hoteismais/londres.html" },
+    { nome: "Hotel Metropol", cidade: "Moscou", regiao: "russia", imagem: "https://www.metropol-moscow.ru/upload/resize_cache/iblock/64f/980_735_1/64fdde3052a3ac438d973e724d10b8b2.jpg", texto: "Elegância imperial russa ao lado da Praça Vermelha.", link: "hoteismais/moscou.html" },
+    { nome: "Four Seasons Lion Palace", cidade: "São Petersburgo", regiao: "russia", imagem: "https://media.cntraveler.com/photos/5a845f97fa7b22623e2907b3/16:9/w_2560%2Cc_limit/Four-Seasons-Hotel-Lion-Palace-St-Petersburg__2018_FSHP_StPetersburg_Lobby.jpg", texto: "Palácio do século XIX com luxo contemporâneo.", link: "hoteismais/stpetersburgo.html" },
+    { nome: "Hotel Gajoen Tokyo", cidade: "Tóquio", regiao: "asia", imagem: "https://www.hotelgajoen-tokyo.com/asset/img/top/slide01.jpg", texto: "Arte, tradição e luxo no coração do Japão.", link: "hoteismais/toquio.html" },
+    { nome: "Mandarin Oriental Bangkok", cidade: "Bangkok", regiao: "asia", imagem: "https://www.mandarinoriental.com/-/media/images/bangkok/overview/bkk-overview-exterior.jpg", texto: "Beira-rio com hospitalidade tailandesa lendária.", link: "hoteismais/bangkok.html" },
+    { nome: "Burj Al Arab", cidade: "Dubai", regiao: "asia", imagem: "https://cdn.britannica.com/86/94486-050-295C6879/Burj-Al-Arab-Dubai-United-Arab-Emirates.jpg", texto: "Símbolo de luxo nos Emirados Árabes.", link: "hoteismais/dubai.html" },
+    { nome: "Marina Bay Sands", cidade: "Singapura", regiao: "asia", imagem: "https://media.architecturaldigest.com/photos/56fa345a30e60b19050bb3db/16:9/w_2560%2Cc_limit/marina-bay-sands-hotel-singapore-02.jpg", texto: "Piscina infinita icônica e skyline moderno.", link: "hoteismais/singapura.html" },
+    { nome: "The Fullerton Hotel", cidade: "Singapura", regiao: "asia", imagem: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Fullerton_Hotel_Singapore.jpg", texto: "Elegância colonial e localização central.", link: "hoteismais/fullerton.html" },
+    { nome: "Hotel Arts Barcelona", cidade: "Barcelona", regiao: "europa", imagem: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/83/e3/20/hotel-arts-barcelona.jpg", texto: "Vista para o mar Mediterrâneo com arte moderna.", link: "hoteismais/barcelona.html" },
+    { nome: "Badrutt's Palace", cidade: "St. Moritz", regiao: "europa", imagem: "https://www.badruttspalace.com/media/3076/home_hero_1.jpg", texto: "Tradição alpina suíça com requinte absoluto.", link: "hoteismais/stmoritz.html" },
+    { nome: "Emirates Palace", cidade: "Abu Dhabi", regiao: "asia", imagem: "https://cdn.britannica.com/61/128161-050-8C09D83A/Emirates-Palace-Abu-Dhabi-United-Arab-Emirates.jpg", texto: "Hotel-palácio com ouro, mármore e luxo árabe.", link: "hoteismais/abudhabi.html" },
+    { nome: "Soneva Fushi", cidade: "Maldivas", regiao: "asia", imagem: "https://www.soneva.com/wp-content/uploads/2022/05/Crusoe_Res_Two_Bedroom-6.jpg", texto: "Paraíso natural nas ilhas com bangalôs sobre o mar.", link: "hoteismais/maldivas.html" }
+  ];
+
+    function renderHotels(filtro = "all") {
+      const container = document.getElementById("hotel-list");
+      container.innerHTML = "";
+      const filtrados = filtro === "all" ? hoteis : hoteis.filter(h => h.regiao === filtro);
+      filtrados.forEach(hotel => {
+        container.innerHTML += `
+          <section class="section-pag">
+            <img src="${hotel.imagem}" alt="${hotel.nome}" loading="lazy">
+            <div class="section-content">
+              <h2>${hotel.nome}</h2>
+              <p>${hotel.texto}</p>
+              <div class="botao-container">
+                <a class="meu-botao" href="${hotel.link}">Saiba mais</a>
+              </div>
+            </div>
+          </section>
+        `;
+      });
+    }
+
+    function filterHotels(regiao, botao) {
+      document.querySelectorAll(".filter button").forEach(btn => btn.classList.remove("active"));
+      botao.classList.add("active");
+      renderHotels(regiao);
+    }
+
+    renderHotels();
+
+    window.addEventListener('scroll', function() {
+      const botao = document.getElementById('voltarTopo');
+      if (window.scrollY > 300) {
+        botao.style.display = 'block';
+      } else {
+        botao.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Nós - Hemitur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #bbd4ec;
+      --accent: #FFC857;
+      --highlight: #FF9900;
+      --background-light: #f7f9fc;
+      --background-section: #ffffff;
+      --blue-light: #e0f2fe;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--background-light);
+      color: #333;
+    }
+
+    header {
+      background-color: #042c4f;
+      padding: 2px 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo img {
+      height: 104px;
+      width: auto;
+    }
+
+
+    .menu {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      gap: 20px;
+
+    }
+
+    .menu li {
+      margin-left: 20px;
+      position: relative;
+    }
+
+    .menu a {
+      color: #6dc7e8;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      display: block;
+    }
+
+    .menu a:hover {
+      background-color: #6498aa;
+    }
+
+    /* === MENU RESPONSIVO === */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      color: white;
+      font-size: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        background-color: #b5aaaa;
+        padding: 10px 0;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .menu li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    .imagem-banner {
+      background-size: cover;
+      background-position: center;
+      padding: 100px 20px;
+      color: white;
+      text-align: center;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .imagem-banner h1,
+    .imagem-banner h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .imagem-banner p {
+      font-size: 1.25rem;
+      max-width: 800px;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      border-radius: 16px;
+      padding: 32px;
+      background: white;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      color: #120741;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .values {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: var(--blue-light);
+    }
+
+    .values h2 {
+      font-size: 2rem;
+      color: #120741;
+      margin-bottom: 20px;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .value-item {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .value-item h4 {
+      color: #120741;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .value-item p {
+      font-size: 0.95rem;
+    }
+
+
+    footer {
+      background-color: #042c4f;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+      <div class="logo"><img src="logo.png" alt="logo" /></div>
+      </div>
+
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+
+        <!-- Menu Dropdown -->
+        <li><a href="hoteis.html">Hotéis</a></li>
+
+        <li><a href="sobrenos.html">Sobre nós</a></li>
+      </ul>
+
+  </header>
+
+  <section class="imagem-banner"
+    style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090');">
+    <h1>Conectando pessoas ao mundo</h1>
+    <p>Somos a Hemitur, uma agência que acredita que viajar transforma — e que cada viagem deve ser única, acessível e
+      memorável. Mais de 12 mil histórias já passaram por aqui.</p>
+  </section>
+
+  <section class="grid-cards">
+    <div class="card">
+      <h3>Quem Somos</h3>
+      <p>Nascemos em 2010 com o propósito de oferecer muito mais do que destinos: oferecemos experiências inesquecíveis
+        com acolhimento, confiança e paixão por servir.</p>
+    </div>
+    <div class="card">
+      <h3>Missão</h3>
+      <p>Transformar sonhos em viagens reais, oferecendo suporte completo, roteiros personalizados e um atendimento
+        verdadeiramente humano.</p>
+    </div>
+    <div class="card">
+      <h3>Visão</h3>
+      <p>Ser referência nacional em turismo afetivo, ético e inovador, sempre promovendo conexões reais entre pessoas e
+        culturas.</p>
+    </div>
+    <div class="card">
+      <h3>Por que a Hemitur?</h3>
+      <p>Mais que uma agência, somos suas parceiras de jornada. Atendimento diferenciado, parcerias com redes confiáveis
+        e roteiros únicos em cada detalhe.</p>
+    </div>
+  </section>
+
+  <section class="imagem-banner"
+    style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');">
+    <h2>Cada destino guarda uma nova história</h2>
+    <p>Seja uma praia paradisíaca, uma cidade histórica ou uma montanha gelada — com a Hemitur, sua próxima lembrança
+      começa aqui.</p>
+  </section>
+
+  <section class="imagem-banner"
+    style="background-image: url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff');">
+    <h2>Explore lugares que contam histórias</h2>
+    <p>Conectamos você a destinos únicos, onde cada passo é uma nova lembrança para guardar para sempre.</p>
+  </section>
+
+  <section class="values">
+    <h2>Nossos Valores</h2>
+    <div class="value-grid">
+      <div class="value-item">
+        <h4>Empatia</h4>
+        <p>Entendemos a história e o sonho de cada viajante.</p>
+      </div>
+      <div class="value-item">
+        <h4>Compromisso</h4>
+        <p>Levamos cada experiência a sério, do início ao fim.</p>
+      </div>
+      <div class="value-item">
+        <h4>Inovação</h4>
+        <p>Estamos sempre atualizadas para surpreender.</p>
+      </div>
+      <div class="value-item">
+        <h4>Transparência</h4>
+        <p>Relacionamentos honestos com clientes e parceiros.</p>
+      </div>
+      <div class="value-item">
+        <h4>Paixão</h4>
+        <p>Amamos o que fazemos e isso se reflete em cada viagem.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Pronto para sua próxima aventura?</strong></p>
+    <p><a href="pacote1.html">Ver Nossos Pacotes</a></p>
+    <p>
+      <a href="https://wa.me/5585982033367" target="_blank">WhatsApp</a> •
+      <a href="https://instagram.com/hemitur.oficial" target="_blank">Instagram</a> •
+      <a href="mailto:hemitur.oficial@gmail.com">Email</a>
+    </p>
+    <p>© 2025 Hemitur Turismo. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+
+</html>

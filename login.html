@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hemitur - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-box">
+    <h2>Bem-vindo de volta!</h2>
+      <input type="text" name="username" placeholder="Usuário" required />
+      <input type="password" name="password" placeholder="Senha" required />
+      <button type="submit"><a href="index.html">Entrar</a></button>
+      <small><a href="#" onclick="abrirRecuperacao()">Esqueceu a senha?</a></small>
+  </div>
+
+  <!-- Modal de Recuperação -->
+  <div id="recuperacaoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
+    <div style="background:white; color:#003B73; padding:30px; border-radius:15px; max-width:400px; width:90%;">
+      <h3>Recuperar Senha</h3>
+      <div id="etapa1">
+        <p>Informe seu e-mail cadastrado:</p>
+        <input type="email" id="emailRecuperacao" placeholder="seuemail@exemplo.com" required>
+        <button onclick="enviarCodigo()">Enviar Código</button>
+      </div>
+      <div id="etapa2" style="display:none;">
+        <p>Enviamos um código para seu e-mail. Digite abaixo para redefinir sua senha:</p>
+        <input type="text" id="codigoDigitado" placeholder="Código recebido" required>
+        <input type="password" id="novaSenha" placeholder="Nova senha" required>
+        <button onclick="confirmarCodigo()">Redefinir Senha</button>
+      </div>
+      <button onclick="fecharRecuperacao()" style="margin-top:15px;">Cancelar</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-section">
+      <a href="https://wa.me/5585982033367" target="_blank" title="WhatsApp">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"> WhatsApp
+      </a>
+      <a href="https://instagram.com/hemitur.oficial" target="_blank" title="Instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"> Instagram
+      </a>
+    </div>
+    <div class="footer-section">
+      <span>Email: hemitur.oficial@gmail.com </span>
+    </div>
+    <div class="footer-section">
+      <span>© 2025 Hemitur Turismo. Todos os direitos reservados.</span>
+    </div>
+  </footer>
+
+  <script>
+    let codigoGerado = "";
+
+    function abrirRecuperacao() {
+      document.getElementById("recuperacaoModal").style.display = "flex";
+    }
+
+    function fecharRecuperacao() {
+      document.getElementById("recuperacaoModal").style.display = "none";
+      document.getElementById("etapa1").style.display = "block";
+      document.getElementById("etapa2").style.display = "none";
+    }
+
+    function enviarCodigo() {
+      const email = document.getElementById("emailRecuperacao").value.trim();
+      if (!email) {
+        alert("Digite seu e-mail.");
+        return;
+      }
+
+      codigoGerado = Math.floor(100000 + Math.random() * 900000).toString();
+
+      fetch('/enviar-codigo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, codigo: codigoGerado })
+      })
+      .then(response => {
+        if (response.ok) {
+          document.getElementById("etapa1").style.display = "none";
+          document.getElementById("etapa2").style.display = "block";
+        } else {
+          alert("Erro ao enviar o código. Verifique o e-mail.");
+        }
+      })
+      .catch(() => alert("Erro ao conectar com o servidor."));
+    }
+
+    function confirmarCodigo() {
+      const codigo = document.getElementById("codigoDigitado").value.trim();
+      const novaSenha = document.getElementById("novaSenha").value.trim();
+
+      if (codigo !== codigoGerado) {
+        alert("Código incorreto.");
+        return;
+      }
+
+      fetch('/redefinir-senha', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ novaSenha })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Senha redefinida com sucesso!");
+          fecharRecuperacao();
+        } else {
+          alert("Erro ao redefinir senha.");
+        }
+      })
+      .catch(() => alert("Erro ao conectar com o servidor."));
+    }
+  </script>
+</body>
+</html>

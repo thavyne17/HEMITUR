@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hemitur - Plano Básico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Seu CSS permanece o mesmo */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      padding-bottom: 120px; /* espaço extra para o rodapé fixo */
+      animation: fadeInBody 1s ease-out;
+    }
+    @keyframes fadeInBody {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .container {
+      background: rgba(0, 59, 115, 0.9);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      animation: slideUp 1.2s ease-out;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #FFC857;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      transition: box-shadow 0.3s ease;
+    }
+    input:focus, select:focus {
+      box-shadow: 0 0 10px #FFC857;
+      outline: none;
+    }
+    select {
+      background: #ffffff;
+      color: #333;
+    }
+    .button {
+      background: linear-gradient(45deg, #FFC857, #FF9900);
+      color: #003B73;
+      font-weight: bold;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: bounceIn 1s ease-out;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      60% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 200, 50, 0.7);
+    }
+    .credit-info {
+      display: none;
+      text-align: left;
+      margin-top: 20px;
+      animation: fadeIn 0.6s ease;
+    }
+    .credit-info.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 59, 115, 0.95);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 15px 20px;
+      font-size: 0.85rem;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.4);
+      animation: fadeInFooter 1.5s ease;
+    }
+    @keyframes fadeInFooter {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.2s ease;
+    }
+    footer a:hover img {
+      transform: scale(1.2);
+    }
+    footer img {
+      width: 20px;
+      height: 20px;
+      filter: invert(100%);
+      transition: transform 0.2s ease;
+    }
+    .footer-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 5px 0;
+    }
+    @media(max-width: 700px) {
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Assine o Plano Básico Hemitur</h1>
+    <p>Aproveite benefícios exclusivos para suas viagens!</p>
+    <input type="text" placeholder="Nome Completo" id="name" required />
+    <input type="text" placeholder="CPF" id="cpf" maxlength="14" required />
+    <input type="text" placeholder="Cidade" id="city" required />
+    <select id="payment-method" required>
+      <option value="">Selecione o método de pagamento</option>
+      <option value="credit">Cartão de Crédito</option>
+      <option value="boleto">Boleto</option>
+      <option value="pix">PIX</option>
+    </select>
+
+    <div id="credit-info" class="credit-info">
+      <input type="text" placeholder="Número do Cartão" maxlength="19" />
+      <input type="text" placeholder="Banco" />
+    </div>
+
+    <button class="button" onclick="subscribe()">Confirmar Assinatura</button>
+  </div>
+
+  <footer>
+    <div class="footer-section">
+      <a href="https://wa.me/5585982033367" target="_blank" title="WhatsApp">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"> WhatsApp
+      </a>
+      <a href="https://instagram.com/hemitur.oficial" target="_blank" title="Instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"> Instagram
+      </a>
+    </div>
+    <div class="footer-section">
+      <span>Email: hemitur.oficial@gmail.com </span>
+    </div>
+    <div class="footer-section">
+      <span>© 2025 Hemitur Turismo. Todos os direitos reservados.</span>
+    </div>
+  </footer>
+
+  <script>
+    const paymentSelect = document.getElementById('payment-method');
+    const creditInfo = document.getElementById('credit-info');
+    const subscribeButton = document.querySelector('.button'); // Pega o botão de assinatura
+
+    // Função para verificar o status da assinatura ao carregar a página
+    function checkSubscriptionStatus() {
+      const isSubscribed = localStorage.getItem('hemitur_subscribed');
+      if (isSubscribed === 'true') {
+        // Se já for assinante, modifica o texto do botão e adiciona uma classe
+        subscribeButton.textContent = "Gerenciar Assinatura";
+        subscribeButton.onclick = confirmCancelSubscription; // Altera a função do clique
+        // Opcional: desabilitar campos de formulário se já for assinante
+        document.getElementById('name').disabled = true;
+        document.getElementById('cpf').disabled = true;
+        document.getElementById('city').disabled = true;
+        paymentSelect.disabled = true;
+      }
+    }
+
+    paymentSelect.addEventListener('change', () => {
+      creditInfo.classList.toggle('active', paymentSelect.value === 'credit');
+    });
+
+    function subscribe() {
+      const name = document.getElementById('name').value.trim();
+      const cpf = document.getElementById('cpf').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const method = paymentSelect.value;
+
+      if (!name || !cpf || !city || !method) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+      }
+
+      alert("Assinatura confirmada com sucesso! Bem-vindo(a) ao Plano Básico Hemitur.");
+      // Salva no localStorage que o usuário é assinante
+      localStorage.setItem('hemitur_subscribed', 'true');
+      // Redireciona para o index.html
+      window.location.href = "index.html";
+    }
+
+    function confirmCancelSubscription() {
+      const confirmCancel = confirm("Você já é assinante do Plano Básico Hemitur. Deseja cancelar sua assinatura?");
+      if (confirmCancel) {
+        // Se o usuário confirmar o cancelamento
+        localStorage.removeItem('hemitur_subscribed'); // Remove o status de assinante
+        alert("Sua assinatura foi cancelada com sucesso. Lamentamos sua saída!");
+        // Redireciona para o index.html após o cancelamento
+        window.location.href = "index.html";
+      } else {
+        // Se o usuário não quiser cancelar, apenas volta para o index
+        window.location.href = "index.html";
+      }
+    }
+
+    // Chama a função para verificar o status da assinatura quando a página carrega
+    window.onload = checkSubscriptionStatus;
+  </script>
+</body>
+</html>
